@@ -77,9 +77,51 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
 ### บันทึกผลการทดลอง 
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ทดลอง JavaScript</title>
+</head>
+<body>
+    <!-- Inline JavaScript -->
+    <button onclick="alert('Korn Daengthong')">ปุ่มที่ 1</button>
+
+    <!-- ทดสอบ Internal JavaScript -->
+    <button id="btn2">ปุ่มที่ 2</button>
+
+    <!-- ทดสอบ External JavaScript -->
+    <button id="btn3">ปุ่มที่ 3</button>
+
+    <!-- กล่องข้อความและปุ่มแสดงข้อความ -->
+    <input type="text" id="textBox" placeholder="พิมพ์ข้อความที่นี่">
+    <button onclick="showText()">แสดงข้อความ</button>
+    
+    <p id="output"></p>
+
+    <!-- Internal JavaScript -->
+    <script>
+        document.getElementById('btn2').onclick = function() {
+            alert('25/2/2568');
+        };
+
+        document.getElementById('btn3').onclick = function() {
+            alert('21.00');
+        };
+
+        function showText() {
+            let text = document.getElementById('textBox').value;
+            document.getElementById('output').innerText = text;
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
 ```
 [รูปผลการทดลองที่ 1]
-  
+![K01](https://github.com/user-attachments/assets/6a499b9e-2747-4e3e-85ba-84689005a054)
+
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
 
