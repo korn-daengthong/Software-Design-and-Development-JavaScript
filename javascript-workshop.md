@@ -771,10 +771,95 @@ console.log("เลขคู่:", evenNumbers); // [2, 4]
 ### บันทึกผลการทดลอง 2.4.2
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ตรวจสอบข้อมูล</title>
+</head>
+<body>
+
+    <h2>ตรวจสอบรหัสผ่าน</h2>
+    <label for="password">รหัสผ่าน: </label>
+    <input type="password" id="password" placeholder="กรอกรหัสผ่าน" required />
+    <button type="button" onclick="checkPasswordLength()">ตรวจสอบ</button>
+    <p id="passwordResult"></p>
+
+    <hr>
+
+    <h2>คำนวณ BMI</h2>
+    <label for="weight">น้ำหนัก (กก.): </label>
+    <input type="number" id="weight" placeholder="กรอกน้ำหนัก" required />
+    <br><br>
+    <label for="height">ส่วนสูง (เมตร): </label>
+    <input type="number" step="0.01" id="height" placeholder="กรอกส่วนสูง" required />
+    <br><br>
+    <button type="button" onclick="calculateBMI()">คำนวณ BMI</button>
+    <p id="bmiResult"></p>
+
+    <hr>
+
+    <h2>ทักทายตามอายุ</h2>
+    <label for="name">ชื่อ: </label>
+    <input type="text" id="name" placeholder="กรอกชื่อ" required />
+    <br><br>
+    <label for="age">อายุ: </label>
+    <input type="number" id="age" placeholder="กรอกอายุ" required />
+    <br><br>
+    <button type="button" onclick="greetBasedOnAge()">แสดงคำทักทาย</button>
+    <p id="ageGreeting"></p>
+
+    <script>
+        // ฟังก์ชันคำนวณ BMI
+        const calculateBMI = () => {
+            let weight = parseFloat(document.getElementById('weight').value);
+            let height = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById('bmiResult').innerText = 'กรุณากรอกข้อมูลน้ำหนักและส่วนสูงให้ถูกต้อง';
+                return;
+            }
+
+            const bmi = weight / (height ** 2);
+            document.getElementById('bmiResult').innerText = `ค่า BMI ของคุณคือ: ${bmi.toFixed(2)}`;
+        };
+
+        // ฟังก์ชันทักทายตามอายุ
+        const greetBasedOnAge = () => {
+            let name = document.getElementById('name').value.trim();
+            let age = parseInt(document.getElementById('age').value);
+
+            if (isNaN(age) || age <= 0 || name === '') {
+                document.getElementById('ageGreeting').innerText = 'กรุณากรอกข้อมูลชื่อและอายุให้ถูกต้อง';
+                return;
+            }
+
+            let greeting = (age < 18)
+                ? `โย่วๆ ${name} นู๋`
+                : (age >= 18 && age < 60)
+                    ? `ว่าไงฮ้าฟ ${name}`
+                    : `สวัสดีครับ ${name} คนแก่`;
+
+            document.getElementById('ageGreeting').innerText = greeting;
+        };
+
+        // ฟังก์ชันตรวจสอบรหัสผ่าน
+        const checkPasswordLength = () => {
+            let password = document.getElementById('password').value;
+
+            if (password.length === 8) {
+                document.getElementById('passwordResult').innerText = '✅ เย่!รหัสผ่านถูกต้อง';
+            } else {
+                document.getElementById('passwordResult').innerText = '❌ รหัสผ่านต้องมีความยาว 8 ตัวอักษร';
+            }
+        };
+    </script>
+
+</body>
+</html>
 ```
 [รูปผลการทดลองที่ 2.4.2]
-
-
+![K2 4 2 1](https://github.com/user-attachments/assets/69593d61-5654-469f-b94d-e6e0edf42bbc)
 ## การทดลองที่ 3 : การใช้ JavaScript กับ HTML และ CSS
 ### การทดลองที่ 3.1 การสร้างปุ่มและจัดการ Event ด้วย JavaScript
 ### ตัวอย่างที่ 1 
