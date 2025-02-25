@@ -653,11 +653,86 @@ process(function() {
 ### บันทึกผลการทดลอง 2.4.1
 ```html
 [บันทึกโค้ด ที่นี่]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test JavaScript</title>
+</head>
+<body>
+    <h2>Test JavaScript</h2>
+
+    <button onclick="getBMI()">คำนวณค่า BMI</button>
+    <button onclick="getGreeting()">ทักทายตามอายุ</button>
+    <button onclick="checkUserPassword()">ตรวจสอบรหัสผ่าน</button>
+
+    <h3>ผลลัพธ์:</h3>
+    <pre id="output"></pre>
+
+    <script>
+        function printResult(text) {
+            document.getElementById("output").textContent = text;
+        }
+
+        function calculateBMI(weight, height) {
+            let bmi = weight / (height * height);
+            return `ค่า BMI ของคุณคือ ${bmi.toFixed(2)}`;
+        }
+
+        function getBMI() {
+            let weight = parseFloat(prompt("กรอกน้ำหนักของคุณ (กิโลกรัม):"));
+            let height = parseFloat(prompt("กรอกส่วนสูงของคุณ (เมตร):"));
+
+            if (!isNaN(weight) && !isNaN(height) && height > 0) {
+                printResult(calculateBMI(weight, height));
+            } else {
+                printResult("กรุณากรอกค่าน้ำหนักและส่วนสูงที่ถูกต้อง!");
+            }
+        }
+
+        function greetUser(name, age) {
+            if (age < 12) {
+                return `อ่าวว่าไงเด็กน้อย ${name}!`;
+            } else if (age < 20) {
+                return `สวัสดีครับพรี่ ${name}!`;
+            } else {
+                return `ดีครับน้อง ${name}!`;
+            }
+        }
+
+        function getGreeting() {
+            let name = prompt("กรอกชื่อของคุณ:");
+            let age = parseInt(prompt("กรอกอายุของคุณ:"));
+
+            if (name && !isNaN(age)) {
+                printResult(greetUser(name, age));
+            } else {
+                printResult("กรุณากรอกชื่อและอายุที่ถูกต้อง!");
+            }
+        }
+
+    
+        const checkPassword = (password) => {
+            return password.length > 8 ? "รหัสผ่านปลอดภัย" : "รหัสผ่านสั้นเกินไป!";
+        };
+
+        function checkUserPassword() {
+            let password = prompt("กรอกรหัสผ่านของคุณ:");
+            if (password) {
+                printResult(checkPassword(password));
+            } else {
+                printResult("กรุณากรอกรหัสผ่าน!");
+            }
+        }
+    </script>
+</body>
+</html>
 ```
 [รูปผลการทดลองที่ 2.4.1]
-
-
-
+![K2 4 1](https://github.com/user-attachments/assets/a1d27407-eb6b-4f1a-8bea-2e11c66f223e)
+![K2 4 2](https://github.com/user-attachments/assets/aaded8d8-defd-4230-8b69-c1934411d40a)
+![K2 4 3](https://github.com/user-attachments/assets/0f2e659d-e231-41c3-913d-ef6acec2148c)
 #### 2.4.2 Arrow Function
 Arrow Function เป็นวิธีการเขียน function แบบสั้นๆ ที่มาพร้อมกับ JavaScript เวอร์ชัน ES6
 
